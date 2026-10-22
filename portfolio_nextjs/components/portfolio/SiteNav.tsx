@@ -31,12 +31,12 @@ export default function SiteNav() {
 
   return <>
     <button className="block rounded border border-line bg-card px-2.5 py-1.5 text-sm text-foreground md:hidden" type="button" aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen(!open)}>Menu</button>
-    <nav id="primary-nav" className={`${open ? "absolute right-5 top-[78px] flex flex-col gap-3 border border-line bg-card p-4" : "hidden"} text-muted md:static md:flex md:flex-row md:items-center md:gap-9 md:border-0 md:bg-transparent md:p-0`} aria-label="Primary navigation">
+    <nav id="primary-nav" className={`${open ? "absolute right-5 top-[78px] flex flex-col gap-3 border border-line bg-card p-4" : "hidden"} text-muted-text md:static md:flex md:flex-row md:items-center md:gap-9 md:border-0 md:bg-transparent md:p-0`} aria-label="Primary navigation">
       {links.map((item) => {
         const active = isCurrent(item);
         return (
           <Link
-            className={`text-sm font-medium transition-colors duration-200 ease ${active ? "text-accent" : "text-muted hover:text-accent"}`}
+            className={`text-sm font-medium transition-colors duration-200 ease ${active ? "text-accent" : "text-muted-text hover:text-hover-text"}`}
             key={item.label}
             href={item.href}
             onClick={() => setOpen(false)}

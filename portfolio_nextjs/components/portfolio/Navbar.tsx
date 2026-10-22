@@ -52,11 +52,12 @@ export default function Navbar() {
     <>
       <header className="navbar">
         <div className="navbar-container">
-          <Link className="brand" href="/" aria-label="Dohar home" onClick={closeDrawer}>
-            Dohar<span>.</span>
-          </Link>
+          <div className="navbar-brand-wrapper">
+            <Link className="navbar-brand" href="/" aria-label="Dohar home" onClick={closeDrawer}>
+              DoharDev<span>.</span>
+            </Link>
+          </div>
 
-          {/* Desktop nav links — centered */}
           <nav className="navbar-nav-desktop" aria-label="Primary navigation">
             {links.map((item) => (
               <Link
@@ -70,7 +71,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Theme toggle — always on the right */}
           <div className="navbar-theme-toggle">
             <ThemeToggle />
           </div>
@@ -88,7 +88,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile drawer */}
       <div id="mobile-drawer" className={`navbar-drawer ${menuOpen ? "navbar-drawer-open" : ""}`} aria-label="Mobile navigation">
         <nav className="navbar-nav-drawer" aria-label="Mobile navigation">
           {links.map((item) => (

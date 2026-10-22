@@ -21,16 +21,34 @@ export default function AboutSection() {
 
   return (
     <>
-      <section className="bg-[var(--hero)] py-12 pb-8 text-slate-50" id="about" aria-labelledby="intro-title">
+      {/* Profile Hero */}
+      <section className="bg-hero py-12 pb-6 text-hero-foreground" id="about" aria-labelledby="intro-title">
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12.5">
-          <div className="grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_192px_minmax(240px,280px)] lg:gap-[clamp(28px,5vw,72px)]">
-            <div className="max-w-[540px]">
-              <span className="inline-flex rounded-full bg-[#243b60] px-4 py-1.5 text-sm font-semibold text-[#68a0ff]">About Me</span>
-              <h1 id="intro-title" className="mt-5 text-[clamp(2.5rem,5vw,3.25rem)] font-bold leading-[1.1] tracking-[-.05em]">Hi, I&apos;m <span className="text-[#68a0ff]">{identity.name.split(" ")[0]}</span></h1>
-              <p className="mt-3.5 max-w-[500px] text-base leading-[1.625] text-[var(--hero-muted)]">I&apos;m a Frontend Developer with a passion for building beautiful, fast, and accessible web experiences. I love turning ideas into interactive products that make an impact.</p>
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_200px] md:gap-12 lg:grid-cols-[minmax(0,1fr)_min(320px,0.6fr)_120px]">
+            <div className="order-2 max-w-120 md:order-1">
+              <span className="inline-flex rounded-full bg-hero-line px-4 py-1.5 text-sm font-semibold text-hero-accent">
+                About Me
+              </span>
+              <h1
+                id="intro-title"
+                className="mt-5 text-[28px] font-extrabold leading-tight tracking-tighter sm:text-[36px] md:text-[42px] lg:text-5xl"
+              >
+                Hi, I&apos;m <span className="text-hero-accent">{identity.name.split(" ")[0]}</span>
+              </h1>
+              <p className="mt-3.5 max-w-120 text-[15px] leading-6.5 text-hero-muted">
+                I&apos;m a Frontend Developer with a passion for building beautiful, fast, and accessible web
+                experiences. I love turning ideas into interactive products that make an impact.
+              </p>
             </div>
-            <Image className="h-48 w-48 rounded-full border-4 border-[var(--hero-line)] object-cover" src="/IMG_4745.webp" alt={`Portrait of ${identity.name}`} width={192} height={192} priority />
-            <div className="flex flex-col gap-4.5 lg:max-w-[280px]">
+            <Image
+              className="mx-auto -order-1 h-37.5 w-37.5 rounded-full object-center object-cover sm:h-42.5 sm:w-42.5 md:order-2 md:h-48 md:w-48"
+              src="/IMG_4745.webp"
+              alt={`Portrait of ${identity.name}`}
+              width={192}
+              height={192}
+              priority
+            />
+            <div className="order-3 ml-5 flex flex-col items-start gap-5.5 md:ml-auto lg:ml-0">
               <InfoItem icon={<UserRound />} label="Name" value={identity.name} />
               <InfoItem icon={<MapPin />} label="Location" value={identity.location} />
               <InfoItem icon={<Mail />} label="Email" value={identity.email} />
@@ -39,18 +57,45 @@ export default function AboutSection() {
           </div>
         </div>
       </section>
-      <section className="border-t border-[var(--line)] bg-[var(--background)] py-12 pb-16" id="journey" aria-labelledby="journey-title">
+
+      {/* Journey Section */}
+      <section className="border-t border-line bg-background py-12 pb-16" id="journey" aria-labelledby="journey-title">
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12.5">
-          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
+          <div className="grid grid-cols-1 items-start gap-8 md:gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12">
             <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-[.08em] text-[var(--accent)]">My journey</p>
-              <h2 id="journey-title" className="text-[clamp(1.85rem,4vw,2.25rem)] font-bold leading-[1.15] tracking-[-.04em]">Work &amp; Education History</h2>
-              <p className="mt-2 text-[.9375rem] text-[var(--muted)]">A timeline of my journey, from learning to building real-world products.</p>
+              <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-accent">MY JOURNEY</p>
+              <h2
+                id="journey-title"
+                className="text-[clamp(1.5rem,4vw,1.875rem)] font-bold leading-tight text-foreground"
+              >
+                Work &amp; Education History
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                A timeline of my journey, from learning to building real-world products.
+              </p>
+              
+              {/* History Timeline */}
               <div className="mt-9 flex flex-col gap-3.5" aria-label="History timeline">
-                {historyEntries.map((entry) => <TimelineItem key={entry.id} entry={entry} isActive={entry.id === selectedId} onClick={() => setSelectedId(entry.id)} />)}
+                {historyEntries.map((entry) => (
+                  <TimelineItem
+                    key={entry.id}
+                    entry={entry}
+                    isActive={entry.id === selectedId}
+                    onClick={() => setSelectedId(entry.id)}
+                  />
+                ))}
               </div>
             </div>
-            {selectedEntry && <article className="min-w-0 rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 shadow-[var(--shadow-card)]" aria-live="polite" aria-label="Selected history detail"><DetailCard entry={selectedEntry} /></article>}
+            {/* Selected History Detail */}
+            {selectedEntry && (
+              <article
+                className="h-full min-w-0 rounded-[10px] border border-line bg-card p-5 shadow-(--shadow-card) sm:p-6"
+                aria-live="polite"
+                aria-label="Selected history detail"
+              >
+                <DetailCard entry={selectedEntry} />
+              </article>
+            )}
           </div>
         </div>
       </section>
