@@ -2,7 +2,7 @@ import "server-only";
 
 const api = "https://api.vercel.com";
 
-type VercelProject = { id?: string; link?: { type?: string; repo?: string } };
+type VercelProject = { id?: string; name?: string; link?: { type?: string; repo?: string } };
 type VercelDeployment = { url?: string; target?: string | string[]; readyState?: string; state?: string };
 
 async function vercel<T>(path: string): Promise<T> {
@@ -40,7 +40,7 @@ export async function getVercelDeployments() {
       if (project.link?.type !== "github" || !repository || !project.id) continue;
       const { deployments = [] } = await vercel<{ deployments?: VercelDeployment[] }>(`/v6/deployments?projectId=${encodeURIComponent(project.id)}&target=production&limit=5`);
       const deployment = deployments.find((item) => (item.readyState === "READY" || item.state === "READY") && usableUrl(item.url));
-      const url = usableUrl(deployment?.url);
+      const url = deployment && project.name ? usableUrl(`${project.name}.vercel.app`) : undefined;
       if (!url) continue;
       const key = repository.toLowerCase();
       matches.set(key, url);
