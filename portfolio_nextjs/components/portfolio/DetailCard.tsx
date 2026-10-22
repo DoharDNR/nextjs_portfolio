@@ -27,7 +27,7 @@ export function DetailCard({ entry }: { entry: HistoryEntry }) {
       <div className="mb-7">
         <h4 className="mb-3 text-sm font-semibold text-foreground">{entry.type === "education" ? "Technologies or subjects" : "Technologies Used"}</h4>
         <div className="flex flex-wrap gap-2">
-          {entry.technologies.map((tech) => <span key={tech} className="inline-flex items-center rounded-full bg-accent-soft px-3 py-1.5 text-[11px] font-medium text-muted-foreground">{tech}</span>)}
+          {entry.technologies.map((tech) => <span key={tech} className="inline-flex items-center rounded-full bg-accent-soft px-3 py-1.5 text-[11px] font-medium text-accent">{tech}</span>)}
         </div>
       </div>
       {entry.quote && <div className="flex gap-3 rounded-lg bg-accent-soft p-4 text-xs italic leading-5 text-muted-foreground"><Quote className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" /><p>{entry.quote}</p></div>}

@@ -24,8 +24,8 @@ export default function AboutSection() {
       {/* Profile Hero */}
       <section className="bg-hero py-12 pb-6 text-hero-foreground" id="about" aria-labelledby="intro-title">
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12.5">
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_200px] md:gap-12 lg:grid-cols-[minmax(0,1fr)_min(320px,0.6fr)_120px]">
-            <div className="order-2 max-w-120 md:order-1">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[2fr_1fr_auto] md:gap-12 lg:grid-cols-[2fr_1fr_auto]">
+            <div className="max-w-120">
               <span className="inline-flex rounded-full bg-hero-line px-4 py-1.5 text-sm font-semibold text-hero-accent">
                 About Me
               </span>
@@ -41,14 +41,14 @@ export default function AboutSection() {
               </p>
             </div>
             <Image
-              className="mx-auto -order-1 h-37.5 w-37.5 rounded-full object-center object-cover sm:h-42.5 sm:w-42.5 md:order-2 md:h-48 md:w-48"
+              className="mx-auto h-37.5 w-37.5 rounded-full object-center object-cover sm:h-42.5 sm:w-42.5 md:h-48 md:w-48"
               src="/IMG_4745.webp"
               alt={`Portrait of ${identity.name}`}
               width={192}
               height={192}
               priority
             />
-            <div className="order-3 ml-5 flex flex-col items-start gap-5.5 md:ml-auto lg:ml-0">
+            <div className="ml-20 flex flex-col items-start gap-5.5 md:ml-0 lg:ml-0">
               <InfoItem icon={<UserRound />} label="Name" value={identity.name} />
               <InfoItem icon={<MapPin />} label="Location" value={identity.location} />
               <InfoItem icon={<Mail />} label="Email" value={identity.email} />
