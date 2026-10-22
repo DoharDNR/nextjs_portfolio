@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="flex flex-col items-center gap-1 md:items-end">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground line-through">v1.0.0</span>
-                  <span className="text-sm font-medium text-foreground">v1.4.1</span>
+                  <span className="text-sm font-medium text-foreground">v1.4.5</span>
                 </div>
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-accent">
                   <svg className="animate-spin" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
