@@ -24,6 +24,18 @@ export default function Navbar() {
 
   useEffect(() => {
     const updatePosition = () => {
+      if (pathname !== "/") {
+        setHash("");
+        return;
+      }
+
+      const contactSection = document.getElementById("contact");
+      const isAtPageBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
+      if (contactSection && isAtPageBottom) {
+        setHash("#contact");
+        return;
+      }
+
       const sections = ["about", "journey", "contact"]
         .map((id) => document.getElementById(id))
         .filter((section): section is HTMLElement => section !== null);
@@ -39,7 +51,7 @@ export default function Navbar() {
       window.removeEventListener("hashchange", updatePosition);
       window.removeEventListener("scroll", updatePosition);
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!menuOpen) return;
