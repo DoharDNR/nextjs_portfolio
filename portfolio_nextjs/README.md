@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dohar Siregar Portfolio
 
-## Getting Started
+A bounded Next.js App Router portfolio prototype based on the migration PRD. The current implementation preserves the core portfolio structure without inventing unverified profile data or external API behavior.
 
-First, run the development server:
+## Current scope
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Implemented:
+
+- Responsive homepage at `/`
+- About/profile section
+- Journey section with an explicit placeholder until verified history data is available
+- Contact links with safe external-link attributes
+- Projects route at `/projects` with an explicit unconnected-data state
+- Semantic layout, navigation, and footer
+- Responsive styling and keyboard focus states
+- Next.js metadata and optimized Geist fonts
+- Route-level error and not-found boundaries
+
+Intentionally deferred:
+
+- GitHub repository discovery
+- Vercel deployment matching
+- Theme switching
+- Interactive work and education timeline
+- Portrait assets
+- Vercel Analytics and Speed Insights
+- Additional UI libraries and unused PRD dependencies
+
+These items should be added only after the original implementation, source data, and credentials are verified.
+
+## Stack
+
+- Next.js App Router
+- React 19
+- TypeScript
+- Tailwind CSS v4 tooling
+- `next/font` with Geist
+
+The project intentionally keeps the dependency set small. React Router, Vite-only packages, API clients, and speculative UI dependencies were not carried into this prototype.
+
+## Project structure
+
+```text
+app/
+├── error.tsx            # Route error boundary
+├── globals.css          # Global and responsive styles
+├── layout.tsx           # Root layout, metadata, and fonts
+├── not-found.tsx        # 404 page
+├── page.tsx             # About, journey, contact, and footer
+└── projects/
+    └── page.tsx         # Projects empty state
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies and start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+## Available commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run dev       # Start the development server
+npm run lint      # Run ESLint
+npx tsc --noEmit  # Type-check without emitting files
+npm run build     # Create a production build
+npm run start     # Serve the production build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Validation
 
-## Deploy on Vercel
+The current prototype has been validated with:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run lint`
+- `npx tsc --noEmit`
+- `npm run build`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Manual smoke checks should cover `/`, `/projects`, keyboard navigation, external links, and responsive layouts at mobile, tablet, and desktop widths.
+
+## Migration notes
+
+When the deferred integrations are implemented:
+
+1. Keep GitHub and Vercel credentials server-only.
+2. Use Server Components for project data fetching by default.
+3. Add explicit empty and error states instead of an indefinite loading skeleton.
+4. Preserve the optional `deploymentUrl` field only for verified production deployments.
+5. Add client components only for interactions such as theme controls, mobile navigation, and timeline selection.
+6. Keep environment variables unprefixed by `NEXT_PUBLIC_`.
+
+Expected server-only variables for the full migration are documented in the PRD:
+
+```env
+GITHUB_TOKEN=
+GITHUB_USERNAME=
+GITHUB_AUTHOR_EMAIL=
+VERCEL_TOKEN=
+VERCEL_TEAM_ID=
+```
+
+Do not commit real values or expose them to browser code.
+
+## Deployment
+
+The app is suitable for deployment on [Vercel](https://vercel.com). Build locally with `npm run build` before deploying. Configure server-only environment variables in the Vercel project settings when the GitHub and Vercel integrations are implemented.
+
+## Reference
+
+See [`../nextjs-migration-prd.md`](../nextjs-migration-prd.md) for the complete product requirements, migration phases, security rules, and acceptance criteria.
